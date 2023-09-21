@@ -4,7 +4,8 @@ import { Ul, Li, Name, Number, Button } from './Contacts.styled'
 
 // redux
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteContact, getContacts } from 'redux/contactsSlice'
+import { deleteContact } from 'redux/API'
+import { getContacts } from 'redux/contactsSlice'
 import { getFilter } from 'redux/filterSlice'
 
 const Contacts = () => {
@@ -23,11 +24,11 @@ const Contacts = () => {
 
   return (
     <Ul>
-      {getFilteredContacts().map(({ id, name, number }) => (
+      {getFilteredContacts().map(({ id, name, phone }) => (
 
         <Li key={id}>
           <Name>{name} :</Name>
-          <Number>{number}</Number>
+          <Number>{phone}</Number>
           <Button type="button" onClick={() => dispatch(deleteContact(id))}>delete</Button>
         </Li>
         

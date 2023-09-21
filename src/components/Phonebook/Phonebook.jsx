@@ -7,7 +7,8 @@ import { NameOptions, NumberOptions } from "./InputField"
 
 // redux
 import { useDispatch, useSelector } from "react-redux"
-import { addContact,getContacts } from "redux/contactsSlice"
+import { getContacts } from "redux/contactsSlice"
+import { addContact } from "redux/API"
 
 function Phonebook() {
 
@@ -19,7 +20,7 @@ function Phonebook() {
   const { register, handleSubmit, formState: { errors },reset } = useForm({
     defaultValues: {
       name: '',
-      number: ''
+      phone: ''
     }
   })
 
@@ -47,7 +48,7 @@ function Phonebook() {
 
       <Input
         autoComplete="off"
-        {...register("number", NumberOptions)}
+        {...register("phone", NumberOptions)}
         style={{ borderColor: errors.number ? 'red' : 'initial' }}
         placeholder="Number"
       />
